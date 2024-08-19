@@ -81,6 +81,7 @@ const nextImageExportOptimizer = async function () {
   let blurSize: number[] = [];
   let remoteImageCacheTTL = 0;
   let exportFolderName = "nextImageExportOptimizer";
+  let exportAssetPrefix = "";
   const { remoteImageFilenames, remoteImageURLs } = await getRemoteImageURLs(
     nextConfigFolder,
     folderPathForRemoteImages
@@ -142,6 +143,9 @@ const nextImageExportOptimizer = async function () {
       newPath?.nextImageExportOptimizer_generateAndUseBlurImages == "true"
     ) {
       blurSize = [10];
+    }
+    if (newPath.nextImageExportOptimizer_exportAssetPrefix !== undefined) {
+      exportAssetPrefix = newPath.nextImageExportOptimizer_exportAssetPrefix;
     }
     if (newPath.nextImageExportOptimizer_exportFolderName !== undefined) {
       exportFolderName = newPath.nextImageExportOptimizer_exportFolderName;
@@ -268,12 +272,14 @@ const nextImageExportOptimizer = async function () {
 
   const allFilesInImageFolderAndSubdirectories =
     isImageFolderSubdirectoryOfPublicFolder
-      ? getAllFilesAsObject(imageFolderPath, imageFolderPath, exportFolderName)
+      ? getAllFilesAsObject(imageFolderPath, imageFolderPath, exportFolderName, [], exportAssetPrefix)
       : [];
   const allFilesInStaticImageFolder = getAllFilesAsObject(
     staticImageFolderPath,
     staticImageFolderPath,
-    exportFolderName
+    exportFolderName,
+    [],
+    exportAssetPrefix,
   );
   // append the static image folder to the image array
   allFilesInImageFolderAndSubdirectories.push(...allFilesInStaticImageFolder);
