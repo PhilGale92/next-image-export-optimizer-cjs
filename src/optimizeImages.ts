@@ -272,7 +272,7 @@ const nextImageExportOptimizer = async function () {
 
   const allFilesInImageFolderAndSubdirectories =
     isImageFolderSubdirectoryOfPublicFolder
-      ? getAllFilesAsObject(imageFolderPath, imageFolderPath, exportFolderName, [] )
+      ? getAllFilesAsObject(imageFolderPath, imageFolderPath, exportFolderName, [], )
       : [];
   const allFilesInStaticImageFolder = getAllFilesAsObject(
     staticImageFolderPath,
@@ -294,7 +294,7 @@ const nextImageExportOptimizer = async function () {
 
     const remoteImageFiles = allFilesInRemoteImageFolder.map(
       (filename: string) => {
-        const filenameFull = path.join(folderPathForRemoteImages, exportAssetPrefix, filename);
+        const filenameFull = path.join(folderPathForRemoteImages, filename);
 
         return {
           basePath: folderPathForRemoteImages,

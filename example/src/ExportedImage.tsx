@@ -58,7 +58,10 @@ const generateImageURL = (
     // If the last character is not a slash
     correctedPath = correctedPath + "/"; // Append a slash to it.
   }
-
+  const imagesDomain = process.env.nextImageExportOptimizer_exportAssetPrefix;
+  if(imagesDomain) {
+    correctedPath = imagesDomain + correctedPath;
+  }
   const isStaticImage = src.includes("_next/static/media");
 
   if (basePath) {
