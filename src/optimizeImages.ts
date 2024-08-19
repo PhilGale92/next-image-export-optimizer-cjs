@@ -272,14 +272,13 @@ const nextImageExportOptimizer = async function () {
 
   const allFilesInImageFolderAndSubdirectories =
     isImageFolderSubdirectoryOfPublicFolder
-      ? getAllFilesAsObject(imageFolderPath, imageFolderPath, exportFolderName, [], exportAssetPrefix)
+      ? getAllFilesAsObject(imageFolderPath, imageFolderPath, exportFolderName, [] )
       : [];
   const allFilesInStaticImageFolder = getAllFilesAsObject(
     staticImageFolderPath,
     staticImageFolderPath,
     exportFolderName,
     [],
-    exportAssetPrefix,
   );
   // append the static image folder to the image array
   allFilesInImageFolderAndSubdirectories.push(...allFilesInStaticImageFolder);
@@ -295,7 +294,7 @@ const nextImageExportOptimizer = async function () {
 
     const remoteImageFiles = allFilesInRemoteImageFolder.map(
       (filename: string) => {
-        const filenameFull = path.join(folderPathForRemoteImages, filename);
+        const filenameFull = path.join(folderPathForRemoteImages, exportAssetPrefix, filename);
 
         return {
           basePath: folderPathForRemoteImages,
