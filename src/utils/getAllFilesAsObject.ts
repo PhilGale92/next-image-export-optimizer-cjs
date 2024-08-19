@@ -4,8 +4,7 @@ module.exports = function getAllFilesAsObject(
   basePath: string,
   dirPath: string,
   exportFolderName: string,
-  arrayOfFiles: ImageObject[] = [],
-  exportAssetPrefix: string,
+  arrayOfFiles: ImageObject[] = []
 ) {
   // check if the path is existing
   if (fs.existsSync(dirPath)) {
@@ -22,11 +21,10 @@ module.exports = function getAllFilesAsObject(
           dirPath + "/" + file,
           exportFolderName,
           arrayOfFiles,
-          exportAssetPrefix,
         );
       } else {
         const dirPathWithoutBasePath = dirPath
-          .replace(basePath, exportAssetPrefix) // remove the basePath for later path composition
+            .replace(basePath, "") // remove the basePath for later path composition
           .replace(/^(\/)/, ""); // remove the first trailing slash if there is one at the first position
         arrayOfFiles.push({ basePath, dirPathWithoutBasePath, file });
       }
