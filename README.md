@@ -122,12 +122,12 @@ import ExportedImage from "next-image-export-optimizer";
 <ExportedImage src="https://example.com/remote-image.jpg" alt="Remote Image" />;
 ```
 
-In order for the image optimization at build time to work correctly, you have to specify all remote image urls in a file called **remoteOptimizedImages.js** in the root directory of your project (where the next.config.js is stored as well). The file should export an array of strings containing the urls of the remote images. Returning a promise of such array is also supported.
+In order for the image optimization at build time to work correctly, you have to specify all remote image urls in a file called **remoteOptimizedImages.cjs** in the root directory of your project (where the next.config.js is stored as well). The file should export an array of strings containing the urls of the remote images. Returning a promise of such array is also supported.
 
 Example:
 
 ```javascript
-// remoteOptimizedImages.js
+// remoteOptimizedImages.cjs
 module.exports = [
   "https://example.com/image1.jpg",
   "https://example.com/image2.jpg",

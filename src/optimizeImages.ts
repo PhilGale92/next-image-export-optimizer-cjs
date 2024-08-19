@@ -27,7 +27,7 @@ if (process.argv.length === 3) {
   // Colorize the output to red
   console.error("\x1b[31m");
   console.error(
-    "next-image-export-optimizer: Breaking change: Please provide the path to the next.config.js file as an argument with the name --nextConfigPath."
+    "next-image-export-optimizer-cjs: Breaking change: Please provide the path to the next.config.js file as an argument with the name --nextConfigPath."
   );
   // Reset the color
   console.error("\x1b[0m");
@@ -156,11 +156,11 @@ const nextImageExportOptimizer = async function () {
     if (
       nextjsConfig.transpilePackages === undefined || // transpilePackages is not set
       (nextjsConfig.transpilePackages !== undefined &&
-        !nextjsConfig.transpilePackages.includes("next-image-export-optimizer")) // transpilePackages is set but does not include next-image-export-optimizer
+        !nextjsConfig.transpilePackages.includes("next-image-export-optimizer-cjs")) // transpilePackages is set but does not include next-image-export-optimizer
     ) {
       console.warn(
         "\x1b[41m",
-        `Changed in 1.2.0: You have not set transpilePackages: ["next-image-export-optimizer"] in your next.config.js. This may cause problems with next-image-export-optimizer. Please add this line to your next.config.js.`,
+        `Changed in 1.2.0: You have not set transpilePackages: ["next-image-export-optimizer-cjs"] in your next.config.js. This may cause problems with next-image-export-optimizer. Please add this line to your next.config.js.`,
         "\x1b[0m"
       );
     }
@@ -641,7 +641,7 @@ const nextImageExportOptimizer = async function () {
       } from the optimized images folders.`
     );
 
-  console.log("---- next-image-export-optimizer: Done ---- ");
+  console.log("---- next-image-export-optimizer-cjs: Done ---- ");
 };
 
 if (require.main === module) {
