@@ -10,7 +10,7 @@ export async function getRemoteImageURLs(
   let remoteImageURLs: string[] = [];
   const remoteImagesFilePath = path.join(
     nextConfigFolder,
-    "remoteOptimizedImages.js"
+    "remoteOptimizedImages.cjs"
   );
   if (fs.existsSync(remoteImagesFilePath)) {
     const remoteOptimizedImages = await require(remoteImagesFilePath);
